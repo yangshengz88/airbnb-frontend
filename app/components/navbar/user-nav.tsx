@@ -1,13 +1,24 @@
 'use client'
-import { useState} from "react"
+import React, { useState} from "react"
 import MenuLink from "./menu-link"
 import useLoginModal from "@/app/hooks/use-login-modal"
 import LoginModal from "../modals/login-modal";
 import useSignupModal from "@/app/hooks/use-signup-modal";
-export default function UserNav(){
+import LogoutButton from "../logout-button";
+
+interface UsernavProps {
+    userId?: string | null;
+
+}
+
+const UserNav: React.FC<UsernavProps>=  (
+    {userId}
+)=>
+    {
     const loginModal = useLoginModal();
     const signupModal = useSignupModal();
     const [isOpen, setIsOpen] = useState(false);
+
     return (
         <div className="p-2 relative inline-block border rounded-full">
             <button 
@@ -24,21 +35,27 @@ export default function UserNav(){
 
             {isOpen &&(
                 <div className="w-[220px] absolute top-[60px] right-0 bg-white border rounded-xl shadow-md flex flex-col cursor-pointer">
-                    <MenuLink
-                        label="Log in"
-                        onClick={()=>{
-                            setIsOpen(false);
-                            loginModal.open();
-                        }}
-                    />
-                    <MenuLink
-                        label="Sign up"
-                        onClick={()=>{
-                            setIsOpen(false);
-                            signupModal.open();
-                        }}
-                    />
-                    
+                    {userId ? (
+                        <LogoutButton/>
+
+                    ): (
+                    <>
+                        <MenuLink
+                            label="Log in"
+                            onClick={()=>{
+                                setIsOpen(false);
+                                loginModal.open();
+                            }}
+                        />
+                        <MenuLink
+                            label="Sign up"
+                            onClick={()=>{
+                                setIsOpen(false);
+                                signupModal.open();
+                            }}
+                        />
+                    </>
+                    )}
                 </div>
 
             )}
@@ -46,3 +63,5 @@ export default function UserNav(){
     
     );
 }
+
+export default UserNav;
