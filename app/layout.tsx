@@ -5,6 +5,8 @@ import Navbar from "./components/navbar/navbar";
 import Modal from "./components/modals/modal";
 import LoginModal from "./components/modals/login-modal";
 import SignupModal from "./components/modals/signup-modal";
+import AddPropertyButton from "./components/navbar/add-property-button";
+import AddPropertyModal from "./components/modals/add-property-modal";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +39,7 @@ export default function RootLayout({
         </div>
         <LoginModal/>
         <SignupModal/>
+        <AddPropertyModal/>
       </body>
     </html>
   );
