@@ -5,6 +5,8 @@ import useLoginModal from "@/app/hooks/use-login-modal"
 import LoginModal from "../modals/login-modal";
 import useSignupModal from "@/app/hooks/use-signup-modal";
 import LogoutButton from "../logout-button";
+import { useRouter } from "next/navigation";
+
 
 interface UsernavProps {
     userId?: string | null;
@@ -18,6 +20,7 @@ const UserNav: React.FC<UsernavProps>=  (
     const loginModal = useLoginModal();
     const signupModal = useSignupModal();
     const [isOpen, setIsOpen] = useState(false);
+    const router = useRouter();
 
     return (
         <div className="p-2 relative inline-block border rounded-full">
@@ -36,7 +39,38 @@ const UserNav: React.FC<UsernavProps>=  (
             {isOpen &&(
                 <div className="w-[220px] absolute top-[60px] right-0 bg-white border rounded-xl shadow-md flex flex-col cursor-pointer">
                     {userId ? (
-                        <LogoutButton/>
+                        <>
+                            <MenuLink
+                                label='Inbox'
+                                onClick={()=>{
+                                    setIsOpen(false);
+                                    router.push('/inbox')
+                                }}
+                            />
+                            <MenuLink
+                                label='My properties'
+                                onClick={()=>{
+                                    setIsOpen(false);
+                                    router.push('/myproperties')
+                                }}
+                            />
+                            <MenuLink
+                                label='My reservations'
+                                onClick={()=>{
+                                    setIsOpen(false);
+                                    router.push('/myreservations')
+                                }}
+                            />
+                            <MenuLink
+                                label='My favorites'
+                                onClick={()=>{
+                                    setIsOpen(false);
+                                    router.push('/myfavorites')
+                                }}
+                            />
+                            <LogoutButton/>
+
+                        </>
 
                     ): (
                     <>

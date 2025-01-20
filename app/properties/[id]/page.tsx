@@ -13,7 +13,7 @@ export default async function PropertyDetailPage({params}: {params:{id:string}})
             <div className="w-full h-[64vh] mb-4 overflow-hidden rounded-xl relative">
                 <Image
                     fill
-                    src="/beach_1.jpg"
+                    src={property.image_url}
                     className="object-cover w-full h-full"
                     alt="Beach house"
                 />
@@ -26,7 +26,8 @@ export default async function PropertyDetailPage({params}: {params:{id:string}})
                         {property.guests} guests - {property.bedrooms} bedrooms - {property.batarooms} bathroom
                     </span>
                     <hr />
-                    <div 
+                    <Link
+                        href={`/landlords/${property.landlord.id}`} 
                         className="py-6 flex items-center space-x-4"
                     >
                         {property.landlord.avatar_url && (
@@ -38,20 +39,14 @@ export default async function PropertyDetailPage({params}: {params:{id:string}})
                                 alt= "User Picture"
                             />
                         )}
-
                         <p><strong>{property.landlord.name}</strong> is your host</p>
-                        
-                    </div>
+                    </Link>
 
                     <hr/>
 
                     <p className="mt-6 text-lg">
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque soluta quaerat beatae repellendus! Praesentium distinctio rem reprehenderit ipsum saepe, aperiam assumenda quos, error neque quo rerum ex. Itaque, amet optio.
                     </p>
-
-                    
-
-
 
                 </div>
                 <ReservationSideBar
