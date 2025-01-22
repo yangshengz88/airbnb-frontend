@@ -2,6 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import PropertyListItem from "./property-list-item";
 import apiService from '@/app/services/api-service';
+import useSearchModal from '@/app/hooks/use-search-modal';
+import { format } from 'date-fns';
+import { useSearchParams } from 'next/navigation';
 
 export type PropertyType = {
     id: string;
@@ -20,7 +23,20 @@ const PropertyList: React.FC<PropertyListProps>=({
     favorites
     
 })=>{
+    const params = useSearchParams();
+    const searchModal = useSearchModal();
+
+    const country = searchModal.query.country;
+    const category = searchModal.query.category;
+    const numGuests = searchModal.query.guests;
+    const numBedrooms = searchModal.query.bathrooms;
+    const numBathrooms = searchModal.query.bedrooms;
+    const checkinDate = searchModal.query.checkIn;
+    const checkoutDate =searchModal.query.checkOut;
+
     const [properties, setProperties] = useState<PropertyType[]>([ ]);
+    
+
     const markFavorite = (id:string, is_favorite: boolean)=>{
         const tmpProperties = properties.map((property: PropertyType)=>{
             if (property.id == id){
@@ -46,6 +62,39 @@ const PropertyList: React.FC<PropertyListProps>=({
             url +='?is_favorites=true'
 
         }
+        else{
+            let urlQuery = '';
+            if (country){
+                urlQuery +='&country=' + country
+            }
+            if(category){
+                urlQuery += '&category='+ category
+            }
+
+            if (numGuests){
+                urlQuery += '&numGuests=' + numGuests
+            }
+            if (numBedrooms){
+                urlQuery += '&numBedrooms=' + numBedrooms
+            }
+            if(numBathrooms){
+                urlQuery += '&numBathrooms='+ numBathrooms
+            }
+            if(checkinDate){
+                urlQuery += '&checkin=' + format(checkinDate, 'yyyy-MM-dd')
+            }
+            if(checkoutDate){
+                urlQuery += '&checkout=' + format(checkoutDate, 'yyyy-MM-dd')
+            }
+            
+            if( urlQuery.length){
+                console.log('Query:', urlQuery)
+                urlQuery= '?'+ urlQuery.substring(1)
+                url += urlQuery
+            }
+
+        }
+
         const tmpProperties =await apiService.get(url) 
         setProperties(tmpProperties.data.map((property: PropertyType)=>{
             if (tmpProperties.favorites.includes(property.id)){
@@ -60,7 +109,7 @@ const PropertyList: React.FC<PropertyListProps>=({
     useEffect(()=>{
         getProperties();
 
-    }, []);
+    }, [category, searchModal.query, params]);
     return (
         <>
             {properties.map((property)=>{
@@ -73,8 +122,6 @@ const PropertyList: React.FC<PropertyListProps>=({
 
                 )
             })}
-            
-
         </>
     );
 }
