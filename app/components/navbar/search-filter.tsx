@@ -12,17 +12,17 @@ export default function SearchFilters(){
                 <div className="flex flex-row items-center justify-between">
                     <div className="w-[250px] h-[48px] lg:h-[64px] px-8 flex flex-col justify-center rounded-full hover:bg-gray-100">
                         <p className="text-xs font-semibold">Where</p>
-                        <p className="text-sm">Wanted location</p>
+                        <p className="text-sm">Search destinations</p>
                     </div>
     
                     <div className="h-[48px] lg:h-[64px] px-8 flex flex-col justify-center rounded-full hover:bg-gray-100">
                         <p className="text-xs font-semibold">Check-in</p>
-                        <p className="text-sm">Add Dates</p>
+                        <p className="text-sm">Add dates</p>
                     </div>
              
                     <div className="h-[48px] lg:h-[64px] px-8 flex flex-col justify-center rounded-full hover:bg-gray-100">
                         <p className="text-xs font-semibold">Check-out</p>
-                        <p className="text-sm">Add Dates</p>
+                        <p className="text-sm">Add dates</p>
                     </div>
               
                     <div className="h-[48px] lg:h-[64px] px-8 flex flex-col justify-center rounded-full hover:bg-gray-100">
