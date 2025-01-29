@@ -17,7 +17,7 @@ const ConversationPage= async ({params}: {params: {id:string}} )=>{
 
     if (!userId || !token){
         return (
-            <main className="max-w-[1500px] max-auto px-6 py-12">
+            <main className="max-w-[1500px] mx-auto px-6 py-12">
                 <p>You need to be authenticated...</p>
             </main>
         );
