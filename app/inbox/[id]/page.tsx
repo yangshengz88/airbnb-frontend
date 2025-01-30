@@ -11,19 +11,25 @@ export type MessageType = {
     sent_to:UserType;
     created_by: UserType;
 }
-const ConversationPage= async ({params}: {params: {id:string}} )=>{
+
+
+ 
+type Params = Promise<{ id: string }>
+
+export default async function ConversationPage({params}: {params: Params} ){
     const userId = await getUserId();
     const token = await getAccessToken();
+    const {id} = await params;
 
-    if (!userId || !token){
+    if (!userId || !token || !id){
         return (
             <main className="max-w-[1500px] mx-auto px-6 py-12">
                 <p>You need to be authenticated...</p>
             </main>
         );
     }
-
-    const conversation = await apiService.get(`/api/chat/${params.id}/`)
+    
+    const conversation = await apiService.get(`/api/chat/${id}/`)
 
     return (
         <main className="max-w-[1500px] mx-auto px-6 pb-6">
@@ -36,4 +42,3 @@ const ConversationPage= async ({params}: {params: {id:string}} )=>{
         </main>
     );
 }
-export default ConversationPage;

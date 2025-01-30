@@ -4,8 +4,11 @@ import { getUserId } from "@/app/lib/actions";
 import apiService from "@/app/services/api-service";
 import Image from "next/image";
 
-export default async function LandlordDetailPage({ params}: {params: {id: string}}){
-    const landlord = await apiService.get(`/api/auth/${params.id}`)
+
+type Params = Promise<{ id: string }>
+export default async function LandlordDetailPage({ params}: {params: Params}){
+    const {id} = await params;
+    const landlord = await apiService.get(`/api/auth/${id}`)
     const userId = await getUserId();
     return (
         <main className="max-w-[1500px] mx-auto px-6 pb-6">
@@ -20,7 +23,7 @@ export default async function LandlordDetailPage({ params}: {params: {id: string
                             className="rounded-full"
                         />
                         <h1 className="mt-6 text-2xl">{landlord.name}</h1>
-                        {userId != params.id && (
+                        {userId != id && (
                             <ContactButton
                                 userId={userId}
                                 landlordId={landlord}

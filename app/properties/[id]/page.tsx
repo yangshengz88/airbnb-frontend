@@ -5,8 +5,11 @@ import apiService from "@/app/services/api-service";
 import Image from "next/image"
 import Link from "next/link";
 
-export default async function PropertyDetailPage({params}: {params:{id:string}}){
-    const property = await apiService.get(`/api/properties/${params.id}`)
+
+type Params = Promise<{ id: string }>
+export default async function PropertyDetailPage({params}: {params:Params}){
+    const {id} = await params;
+    const property = await apiService.get(`/api/properties/${id}`)
     const userId = await getUserId();
     return (
         <main className="max-w-[1500px] mx-auto px-6 pb-6">
