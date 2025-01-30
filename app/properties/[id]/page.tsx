@@ -26,7 +26,7 @@ export default async function PropertyDetailPage({params}: {params:Params}){
                 <div className="py-6 pr-6 col-span-3">
                     <h1 className="mb-4 text-4xl">{property.title}</h1>
                     <span className="mb-6 block text-lg text-gray-600">
-                        {property.guests} guests - {property.bedrooms} bedrooms - {property.batarooms} bathroom
+                        {property.guests} guests - {property.bedrooms} bedrooms - {property.bathrooms} bathroom
                     </span>
                     <hr />
                     <Link
