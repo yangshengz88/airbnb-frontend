@@ -11,7 +11,10 @@ export default async function LandlordDetailPage({ params}: {params: Params}){
     const {id} = await params;
     const landlord = await apiService.get(`/api/auth/${id}`)
     const userId = await getUserId();
+
+
     return (
+        
         <main className="max-w-[1500px] mx-auto px-6 pb-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <aside className="col-span-1 mb-4">
@@ -27,7 +30,7 @@ export default async function LandlordDetailPage({ params}: {params: Params}){
                         {userId != id && (
                             <ContactButton
                                 userId={userId}
-                                landlordId={landlord}
+                                landlordId={landlord.id}
                             
                             />
                         )}
@@ -35,11 +38,11 @@ export default async function LandlordDetailPage({ params}: {params: Params}){
                     </div>
                     
                 </aside>
-                <div className="col-span-1 md:col-span-4 pl-0 md:pl-6">
+                <div className="col-span-1 md:col-span-3 pl-0 md:pl-6">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <Suspense>
-                        <PropertyList/>
-                    </Suspense>
+                        <Suspense>
+                            <PropertyList landlord_id= {id}/>
+                        </Suspense>
                     </div>
                 </div>
             </div>

@@ -14,7 +14,6 @@ export type ConversationType={
     users: UserType[];
 }
 
-
 const InboxPage = async () =>{
     const userId = await getUserId();
     if (!userId){
@@ -38,16 +37,11 @@ const InboxPage = async () =>{
                     <Conversation
                         key={conversation.id}
                         userId={userId}
-                        
                         conversation={conversation}
                     />
                 )
             })}
         </main>
     );
-
-
-
-
 }
 export default InboxPage;

@@ -42,13 +42,16 @@ export default async function PropertyDetailPage({params}: {params:Params}){
                                 alt= "User Picture"
                             />
                         )}
-                        <p><strong>{property.landlord.name}</strong> is your host</p>
+                        {property.landlord.name
+                        ? <p><strong>{property.landlord.name}</strong> is your host</p>
+                        : <p><strong>Anonymous</strong> is your host</p>
+                        }
                     </Link>
 
                     <hr/>
 
                     <p className="mt-6 text-lg">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque soluta quaerat beatae repellendus! Praesentium distinctio rem reprehenderit ipsum saepe, aperiam assumenda quos, error neque quo rerum ex. Itaque, amet optio.
+                        {property.description}
                     </p>
 
                 </div>

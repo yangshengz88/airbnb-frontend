@@ -3,7 +3,7 @@ import { PropertyType } from "./property-list";
 import React from "react";
 import { useRouter } from "next/navigation";
 import FavoriteButton from "../favorite-button";
-import { IMAGES_MANIFEST } from "next/dist/shared/lib/constants";
+
 
 interface PropertyProps {
     property: PropertyType;

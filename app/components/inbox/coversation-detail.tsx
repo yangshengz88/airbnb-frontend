@@ -2,7 +2,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import CustomButton from "../forms/custom-buttom";
 import { ConversationType, UserType } from "@/app/inbox/page";
-import Conversation from "./conversation";
 import useWebSocket from "react-use-websocket";
 import { MessageType } from "@/app/inbox/[id]/page";
 
@@ -25,7 +24,7 @@ const ConversationDetail: React.FC<ConversationDetailProps>= ({
         shouldReconnect: ()=> true,
     })
     useEffect(()=>{
-        console.log("ConnectinG State changed", readyState)
+        console.log("Connecting State changed", readyState)
 
     }, [readyState])
 
@@ -35,7 +34,7 @@ const ConversationDetail: React.FC<ConversationDetailProps>= ({
                 id: '',
                 name: lastJsonMessage.name as string,
                 body: lastJsonMessage.body as string,
-                sent_to:otherUser as UserType,
+                sent_to: otherUser as UserType,
                 created_by: myUser as UserType,
                 conversationId: conversation.id
             }
@@ -77,9 +76,9 @@ const ConversationDetail: React.FC<ConversationDetailProps>= ({
                 {messages.map((message, index)=>(
                     <div    
                         key={index}
-                        className={`w-[80%] py-4 px-6 rounded-xl ${message.name === myUser?.name ? 'ml-[20%] bg-blue-200':'bg-gray-200'}`}
+                        className={`w-[80%] py-4 px-6 rounded-xl ${message.created_by.name === myUser?.name ? 'ml-[20%] bg-blue-200':'bg-gray-200'}`}
                     >
-                        <p className="font-bold text-gray-500">{message.name}</p>
+                        <p className="font-bold text-gray-500">{message.created_by.name}</p>
                         <p>{message.body}</p>                        
                     </div>
                 ))}
