@@ -211,7 +211,7 @@ const AddPropertyModal = () => {
                         <div className='py-4 px-6 bg-gray-600 text-white rounded-xl'>
                             <input 
                                 type="file"
-                                accept='image'
+                                accept='image/*'
                                 onChange={setImage}
                             />
                         </div>

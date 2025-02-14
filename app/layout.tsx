@@ -8,6 +8,7 @@ import SignupModal from "./components/modals/signup-modal";
 import AddPropertyButton from "./components/navbar/add-property-button";
 import AddPropertyModal from "./components/modals/add-property-modal";
 import SearchModal from "./components/modals/search-modal";
+import ProfileModal from "./components/modals/profile-modal";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,7 +42,9 @@ export default function RootLayout({
         <LoginModal/>
         <SearchModal/>
         <SignupModal/>
+        <ProfileModal/>
         <AddPropertyModal/>
+
       </body>
     </html>
   );

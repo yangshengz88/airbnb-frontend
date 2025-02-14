@@ -6,6 +6,8 @@ import LoginModal from "../modals/login-modal";
 import useSignupModal from "@/app/hooks/use-signup-modal";
 import LogoutButton from "../logout-button";
 import { useRouter } from "next/navigation";
+import ProfileModal from "../modals/profile-modal";
+import useProfileModal from "@/app/hooks/use-profile-modal";
 
 
 interface UsernavProps {
@@ -19,6 +21,7 @@ const UserNav: React.FC<UsernavProps>=  (
     {
     const loginModal = useLoginModal();
     const signupModal = useSignupModal();
+    const profileModal = useProfileModal();
     const [isOpen, setIsOpen] = useState(false);
     const router = useRouter();
 
@@ -61,11 +64,19 @@ const UserNav: React.FC<UsernavProps>=  (
                                     router.push('/myreservations')
                                 }}
                             />
+
                             <MenuLink
                                 label='My favorites'
                                 onClick={()=>{
                                     setIsOpen(false);
                                     router.push('/myfavorites')
+                                }}
+                            />
+                            <MenuLink
+                                label='Edit profile'
+                                onClick={()=>{
+                                    setIsOpen(false);
+                                    profileModal.open();
                                 }}
                             />
                             <LogoutButton/>
