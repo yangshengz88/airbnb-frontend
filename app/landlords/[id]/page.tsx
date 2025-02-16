@@ -12,7 +12,6 @@ export default async function LandlordDetailPage({ params}: {params: Params}){
     const landlord = await apiService.get(`/api/auth/${id}`)
     const userId = await getUserId();
 
-
     return (
         
         <main className="max-w-[1500px] mx-auto px-6 pb-6">

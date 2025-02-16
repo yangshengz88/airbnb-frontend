@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import {Range} from "react-date-range";
 import DatePicker from "./calendar";
 import apiService from "@/app/services/api-service";
+import CustomButton from "../forms/custom-buttom";
 
 
 const initialDateRange = {
@@ -141,12 +142,12 @@ const ReservationSideBar: React.FC<ReservationSideBarProps>=({
                 </select>
             </div>
 
-            <div 
-                className="w-full mb-6 py-6 text-center text-white bg-airbnb hover:bg-airbnb-dark rounded-xl"
-                onClick={performBooking}
-            >
-                Book
-            </div>
+            <CustomButton
+                    label="Book"
+                    className="w-[100px] mb-6 py-6"
+                    onClick={performBooking}
+                    
+                />
             <div className="mb-4 flex justify-between align-center">
                 <p>${property.price_per_night} * {nights} nights</p>
                 <p>${property.price_per_night * nights}</p>
