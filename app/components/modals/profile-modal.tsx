@@ -71,7 +71,7 @@ const ProfileModal = ()=>{
                         </div> 
                        
                     </div> 
-                    <h2 className= 'mb-6 text-2xl'>Your Image</h2>
+                    <h2 className= 'mb-6 text-2xl'>Your Avatar</h2>
                     <div className='pt-3 pb-6 space-y-4'>
                         <div className='py-4 px-6 bg-gray-600 text-white rounded-xl'>
                             <input 
