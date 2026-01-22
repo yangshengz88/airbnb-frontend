@@ -1,6 +1,6 @@
-#  [`Fullstack Airbnb Clone`](http://13.58.48.85/) - Next.js 15 / React, Tailwind, Django, Django Rest Framework, Postgresql, AWS EC2
+#  [`Fullstack Airbnb Clone`](http://98.80.141.113/) - Next.js 15 / React, Tailwind, Django, Django Rest Framework, Postgresql, AWS EC2
 
- Click [`Airbnb Clone`](http://13.58.48.85/) to see the whole website
+ Click [`Airbnb Clone`](http://98.80.141.113/) to see the whole website
 
 This repo is the only frontend part of Fullstack Airbnb Clone project. You can find the backend part here [`airbnb-backend-and-database`](https://github.com/yangshengz88/airbnb-backend-and-database).
 

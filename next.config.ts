@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'http',
-        hostname: '13.58.48.85',
+        hostname: '98.80.141.113',
         port:  '1337',
         pathname: '/**'
       }
